@@ -11,4 +11,11 @@ Gem::Specification.new do |s|
   s.homepage    =
     'https://rubygems.org/gems/notion_client'
   s.license       = 'MIT'
+
+  s.add_development_dependency 'faraday'
+
+  s.add_development_dependency 'bundler'
+  s.add_development_dependency 'rake'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'pry'
 end
