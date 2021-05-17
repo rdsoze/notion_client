@@ -4,9 +4,14 @@ RSpec.describe Notion::Client do
   let(:token) { 'some-token' }
   let(:client) { Notion::Client.new(token) }
 
+
+  it "should use the correct base uri" do
+    expect(client.connection.url_prefix). to eq(URI("https://api.notion.com/v1/"))
+  end
+
   describe "get request" do
     let(:success_request_path) { '/success' }
-    let(:stubbed_success_response_body) { {"object":"list","results": []} }
+    let(:stubbed_success_response_body) { load_fixture('200_response.json') }
     let(:stubbed_success_response) { |env| [200, {} , stubbed_success_response_body.to_json] }
 
     let(:fail_auth_request_url) { '/fail-auth' }
@@ -27,8 +32,8 @@ RSpec.describe Notion::Client do
 
     subject { client.send(:get, success_request_path) }
 
-    it "includes access token in the authorization header" do
-      expect(subject).to eq(stubbed_success_response_body[:results])
+    it "returns results for valid requests" do
+      expect(subject).to eq(stubbed_success_response_body)
     end
   end
 end

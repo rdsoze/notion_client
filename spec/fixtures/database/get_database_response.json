@@ -1,0 +1,59 @@
+{
+	"object": "database",
+	"id": "bc39dbb4-f3c0-4b08-aed3-d7c040ef910c",
+	"created_time": "2020-05-14T17:32:00.138Z",
+	"last_edited_time": "2021-05-15T07:03:00.000Z",
+	"title": [{
+		"type": "text",
+		"text": {
+			"content": "Task List",
+			"link": null
+		},
+		"annotations": {
+			"bold": false,
+			"italic": false,
+			"strikethrough": false,
+			"underline": false,
+			"code": false,
+			"color": "default"
+		},
+		"plain_text": "Task List",
+		"href": null
+	}],
+	"properties": {
+		"Date Created": {
+			"id": "'Y6<",
+			"type": "created_time",
+			"created_time": {}
+		},
+		"Due Date": {
+			"id": "H@L?",
+			"type": "date",
+			"date": {}
+		},
+		"Status": {
+			"id": "^OE@",
+			"type": "select",
+			"select": {
+				"options": [{
+					"id": "1",
+					"name": "To Do",
+					"color": "red"
+				}, {
+					"id": "2",
+					"name": "Doing",
+					"color": "yellow"
+				}, {
+					"id": "3",
+					"name": "Done 🙌",
+					"color": "green"
+				}]
+			}
+		},
+		"Name": {
+			"id": "title",
+			"type": "title",
+			"title": {}
+		}
+	}
+}

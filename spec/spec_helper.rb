@@ -1,4 +1,9 @@
 require 'notion'
+require 'pry'
+
+def load_fixture(filename)
+  File.read("spec/fixtures/#{filename}")
+end
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

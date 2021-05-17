@@ -44,19 +44,13 @@ module Notion
 
     def interpret_response(response)
       if response.status == 200
-        body = JSON.parse response.body
-        interpret_object(body["results"], body["object"])
+        JSON.parse response.body
       else
         handle_response_code(response)
       end
     end
 
-    def interpret_object(results, object)
-      if object == 'list'
-        results
-      end
-    end
-
+    #improve
     def handle_response_code(response)
       JSON.parse response.body
     end
