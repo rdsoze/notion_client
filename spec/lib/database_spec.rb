@@ -11,11 +11,16 @@ RSpec.describe Notion::Database do
   let(:get_databases_path) { "databases" }
   let(:get_databases_response_fixture) { load_fixture('database/get_databases_response.json') }
 
+  let(:query_database_path) { "databases/#{database_id}/query" }
+  let(:query) { {filter: {property: 'Status', select: {equals: 'To Do'}}} }
+  let(:query_database_response_fixture) { load_fixture('database/query_database_response.json') }
+
   let(:test_connection) {
     Faraday.new do |builder|
       builder.adapter :test do |stubs|
         stubs.get(get_database_path) { [200, {}, get_database_response_fixture.to_json] }
         stubs.get(get_databases_path) { [200, {}, get_databases_response_fixture.to_json] }
+        stubs.post(query_database_path) { [200, {}, query_database_response_fixture.to_json] }
       end
     end
   }
@@ -33,7 +38,7 @@ RSpec.describe Notion::Database do
   end
 
   it "should query_database" do
-    # expect(client.query_database(query)).to eq(query_response_fixture)
+    expect(client.query_database(database_id, query)).to eq(query_database_response_fixture)
   end
 
 
