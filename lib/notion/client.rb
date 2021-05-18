@@ -42,6 +42,17 @@ module Notion
       interpret_response(response)
     end
 
+    def patch(path, options = {})
+      response = connection.patch do |req|
+        req.url path
+        req.headers["Authorization"] = "Bearer #{access_token}"
+        req.headers['Content-Type'] = "application/json"
+        req.body = options
+      end
+
+      interpret_response(response)
+    end
+
     def interpret_response(response)
       if response.status == 200
         JSON.parse response.body
