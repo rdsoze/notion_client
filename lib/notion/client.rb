@@ -2,6 +2,10 @@ module Notion
   class Client
 
     include Database
+    include Page
+    include Block
+    include Search
+    include User
 
     attr_accessor :access_token
 
